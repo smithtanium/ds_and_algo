@@ -1,3 +1,0 @@
-/home/smithtanium/Documents/Programming/data_stuct_and_algo/LinkedList/build/CMakeFiles/LinkedList.dir
-/home/smithtanium/Documents/Programming/data_stuct_and_algo/LinkedList/build/CMakeFiles/edit_cache.dir
-/home/smithtanium/Documents/Programming/data_stuct_and_algo/LinkedList/build/CMakeFiles/rebuild_cache.dir
