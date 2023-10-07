@@ -53,8 +53,8 @@ template <class T>
 void Node<T>::unlink()
 {
   Node<T> *next = next_, *prev = prev_;
-  next->set_prev(prev_);
-  prev->set_next(next_);
+  next.set_prev(prev_);
+  prev.set_next(next_);
   next_ = nullptr;
   prev_ = nullptr;
 }
@@ -92,16 +92,16 @@ void Node<T>::set_prev(Node<T> *a_node)
 template <class T>
 void Node<T>::push_back(Node<T>* a_node)
 {
-  a_node->set_next(next_);
+  a_node.set_next(next_);
   this->next_ = a_node;
-  a_node->set_prev(this);
+  a_node.set_prev(this);
 }
 
 template <class T>
 void Node<T>::push_front(Node<T>* a_node)
 {
-  a_node->set_prev(prev_);
-  a_node->set_next(this);
+  a_node.set_prev(prev_);
+  a_node.set_next(this);
   this->prev_ = a_node;
 }
 
