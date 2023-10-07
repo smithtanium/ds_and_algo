@@ -1,3 +1,0 @@
-/home/smithtanium/Documents/Programming/ds_and_algo/build/CMakeFiles/List.dir
-/home/smithtanium/Documents/Programming/ds_and_algo/build/CMakeFiles/edit_cache.dir
-/home/smithtanium/Documents/Programming/ds_and_algo/build/CMakeFiles/rebuild_cache.dir
