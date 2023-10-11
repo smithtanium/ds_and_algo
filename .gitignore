@@ -36,5 +36,5 @@
 !/.gitignore
 
 # build folder
-./build
+/build
 
