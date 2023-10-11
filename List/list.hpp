@@ -5,7 +5,7 @@
 #include <stdint.h>
 #include <iostream>
 
-//#include "iterator.hpp"
+#include "iterator.hpp"
 #include "node.hpp"
 
 template <class T>
@@ -32,7 +32,7 @@ class List
 
     //modifiers
     void clear();
-    //iterator<T> insert();
+    Iterator<T> insert(Iterator<T> positon, const T& data);
     //insert_range();
     //emplace();
     //erase();
@@ -88,8 +88,8 @@ List<T>::List() : head_(nullptr), tail_(nullptr), length_(0) {}
 template <class T>
 List<T>::List(T data)
 {
-  Node<T> *newNode = new Node<T>;
-  newNode.set_data(data);
+  Node<T> *newNode = new Node<T>(data);
+  //newNode.set_data(data);
   head_ = newNode;
   tail_ = newNode;
   length_ = 1;
@@ -145,13 +145,13 @@ List<T>::~List()
 template <class T>                                                                                                            
 T List<T>::back()
 {
-  return tail_.get();
+  return tail_.get_data();
 }  
 
 template <class T>
 T List<T>::front()
 {
-  return head_.get();;
+  return head_.get_data();;
 }
 
 /* ***************************************************************
@@ -200,11 +200,18 @@ void List<T>::clear()
   length_= 0;
 }
 
-//template <class T>
-//iterator<T> List<T>::insert(const_iterator positon, T data)
-//{
-//
-//}
+template <class T>
+Iterator<T> List<T>::insert(Iterator<T> position, const T& data)
+{
+  Iterator temp_it = new Iterator<T>;
+  while (temp_it.get_next() != position)
+  {
+    temp_it++;
+  }
+
+  temp_it.push_back(data);
+  return temp_it;
+}
 
 template <class T>
 void List<T>::push_front(T data)

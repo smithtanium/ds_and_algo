@@ -35,7 +35,7 @@ template <class T>
 Node<T>::Node() : next_(nullptr), prev_(nullptr) {}
 
 template <class T>
-Node<T>::Node(T data) : next_(nullptr), prev_(nullptr), data_(data_) {}
+Node<T>::Node(T data) : next_(nullptr), prev_(nullptr), data_(data) {}
 
 template <class T>
 Node<T>::~Node()

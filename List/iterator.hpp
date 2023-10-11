@@ -2,27 +2,30 @@
 #define ITERATOR_H
 
 #include "node.hpp"
-
+template <class T>
 class Iterator 
 { 
   public: 
-    Iterator() noexcept : 
-        m_pCurrentNode (m_spRoot) { } 
+    Iterator() : 
+        node_ (nullptr) { } 
   
-    Iterator(const Node* pNode) noexcept : 
-        m_pCurrentNode (pNode) { } 
+    Iterator(const Node<T>* a_Node) : 
+        node_ (a_Node) { } 
   
-    Iterator& operator=(Node* pNode) 
+    //~Iterator<T>=default;
+    
+
+    Iterator& operator=(Node<T>* a_Node) 
     { 
-      this->m_pCurrentNode = pNode; 
+      this->node_ = a_Node; 
       return *this; 
     } 
   
     // Prefix ++ overload 
     Iterator& operator++() 
     { 
-      if (m_pCurrentNode) 
-      m_pCurrentNode = m_pCurrentNode->pNext; 
+      if (node_) 
+      node_ = node_->get_next(); 
       return *this; 
     } 
   
@@ -32,20 +35,25 @@ class Iterator
       Iterator iterator = *this; 
       ++*this; 
       return iterator; 
-    } 
-  
+    }
+
+    bool operator==(const Iterator& iterator)
+    {
+      return node_ == iterator.node_;
+    }
+
     bool operator!=(const Iterator& iterator) 
     { 
-      return m_pCurrentNode != iterator.m_pCurrentNode; 
+      return node_ != iterator.node_; 
     } 
   
-    int operator*() 
+    T operator*() 
     { 
-      return m_pCurrentNode->data; 
+      return node_->data; 
     } 
-  
+  protected:
+    Node<T>* node_;  
   private: 
-    const Node* m_pCurrentNode; 
 }; 
 
 #endif /* ITERATOR_H */
