@@ -4,9 +4,12 @@
 
 #include <stdint.h>
 
-template <typename T>
+template <class T>
 class Node
 {	
+  template<typename> friend class List;
+  template<typename> friend class Iterator;
+
   public:
     Node();
     Node(T data);

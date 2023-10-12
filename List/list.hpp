@@ -11,8 +11,6 @@
 template <class T>
 class List
 {
-  //template<class T> friend class Node<T>
-  
   public:
     //standard functions	  
     List();
@@ -55,9 +53,9 @@ class List
     //sort();
 
     //iterators
-    //begin();
+    Iterator<T> begin();
     //cbegin();
-    //end();
+    Iterator<T> end();
     //cend();
     //rbegin();
     //crbegin();
@@ -203,14 +201,15 @@ void List<T>::clear()
 template <class T>
 Iterator<T> List<T>::insert(Iterator<T> position, const T& data)
 {
-  Iterator temp_it = new Iterator<T>;
-  while (temp_it.get_next() != position)
+  Node<T> *new_node = new Node<T>(data);
+  Iterator<T> it = Iterator<T>(new_node);
+  while (it != position)
   {
-    temp_it++;
+    it++;
   }
 
-  temp_it.push_back(data);
-  return temp_it;
+  it.node_->push_front(new_node);
+  return it;
 }
 
 template <class T>
@@ -267,20 +266,24 @@ void List<T>::pop_front()
 * ***************************************************************
 * **************************************************************/
 
-//template <class T>
-// void begin()
-// {
-// }
+template <class T>
+Iterator<T> List<T>::begin()
+{
+  Iterator<T> it = Iterator(this->head_);
+  return it; 
+}
 
 //template <class T>
 // void cbegin()
 // {
 // }
 
-//template <class T>
-//void end()
-//{
-//}
+template <class T>
+Iterator<T> List<T>::end()
+{
+  Iterator<T> it = Iterator(this->tail_);
+  return it;
+}
 
 //template <class T>
 // void cend()
@@ -298,7 +301,7 @@ void List<T>::pop_front()
 // }
 
 //template <class T>
-// void rend()
+// void crend()
 // {
 // }
 

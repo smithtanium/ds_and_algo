@@ -2,14 +2,17 @@
 #define ITERATOR_H
 
 #include "node.hpp"
+
 template <class T>
 class Iterator 
 { 
+  template<typename> friend class List;
+  
   public: 
     Iterator() : 
         node_ (nullptr) { } 
   
-    Iterator(const Node<T>* a_Node) : 
+    Iterator(Node<T>* a_Node) : 
         node_ (a_Node) { } 
   
     //~Iterator<T>=default;
