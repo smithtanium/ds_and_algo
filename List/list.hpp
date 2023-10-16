@@ -53,10 +53,10 @@ class List
     //sort();
 
     //iterators
-    Iterator<T> begin();
-    //cbegin();
-    Iterator<T> end();
-    //cend();
+    Iterator<T> begin() noexcept;
+    const Iterator<T> cbegin() const noexcept;
+    Iterator<T> end() noexcept;
+    const Iterator<T>cend() const noexcept;
     //rbegin();
     //crbegin();
     //rend();
@@ -267,28 +267,39 @@ void List<T>::pop_front()
 * **************************************************************/
 
 template <class T>
-Iterator<T> List<T>::begin()
+Iterator<T> List<T>::begin() noexcept
 {
   Iterator<T> it = Iterator(this->head_);
   return it; 
 }
 
 //template <class T>
-// void cbegin()
-// {
-// }
+//const Iterator<T> List<T>::begin() noexcept
+//{
+//  Iterator<T> it = Iterator(this->head_);
+//  return const_cast<Iterator<T>>it; 
+//}
 
 template <class T>
-Iterator<T> List<T>::end()
+const Iterator<T> List<T>::cbegin() const noexcept
+{
+  Iterator<T> it = Iterator(this->head_);
+  return const_cast<Iterator<T>>(it); 
+}
+
+template <class T>
+Iterator<T> List<T>::end() noexcept
 {
   Iterator<T> it = Iterator(this->tail_);
   return it;
 }
 
-//template <class T>
-// void cend()
-// {
-// }
+template <class T>
+const Iterator<T> List<T>::cend() const noexcept
+{
+  Iterator<T> it = Iterator(this->tail_);
+  return const_cast<Iterator<T>>(it); 
+}
 
 //template <class T>
 // void rbegin()

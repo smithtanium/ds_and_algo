@@ -35,6 +35,10 @@
 .*
 !/.gitignore
 
+#~ files
+*.hpp~
+*.cpp~
+
 # build folder
 /build
 
